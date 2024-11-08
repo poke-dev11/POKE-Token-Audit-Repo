@@ -1,10 +1,6 @@
 import "@stdlib/deploy";
 import "./jetton.tact";
 
-message(0xfc708bd2) Mint {
-    amount: Int;
-    receiver: Address;
-}
 
 contract JettonContract with Deployable,Jetton {
     total_supply: Int as coins; // Tracks total supply of Jettons
@@ -23,24 +19,8 @@ contract JettonContract with Deployable,Jetton {
         self.mintable = true;
         self.content = content;
         self.max_supply = max_supply;
-    }
-
-    // @msg The Mint message to initiate the minting process
-    // @amount Amount of Jettons to mint
-    // @receiver Address to receive the minted Jettons
-    receive(msg: Mint) {
-        let ctx: Context = context();
-        require(ctx.sender == self.owner, "Not owner");
-        require(self.mintable, "Not mintable");
-        require(self.total_supply + msg.amount <= self.max_supply, "Max supply exceeded");
-        self.mint(msg.receiver, msg.amount, self.owner); // (to, amount, response_destination)
-    }
-
-    // Close minting permanently
-    // Only the owner can call this method to disable further minting
-    receive("Owner: MintClose") {
-        let ctx: Context = context();
-        require(ctx.sender == self.owner, "Not owner");
+        self.mint(self.owner, max_supply, self.owner);
         self.mintable = false;
     }
+
 }
