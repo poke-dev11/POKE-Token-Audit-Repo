@@ -1,4 +1,4 @@
-# Jetton Token Smart Contracts
+# Poke Token Smart Contracts
 This repository contains smart contracts for implementing a Jetton token, a customizable token on a blockchain platform. It includes contracts for managing the Jetton supply, minting new tokens, handling transfers between wallets, and enforcing ownership rights. 
 
 ## Overview
@@ -27,13 +27,13 @@ To get started with these contracts, you'll need to set up a Tact environment. F
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo-name.git
+   git clone https://github.com/poke-dev11/POKE-Token-Audit-Repo.git
    cd your-repo-name
 
 2. Install the dependencies:
      ```bash
      npm i
-
+     
 ### Build
 
 `npx blueprint build` or `yarn blueprint build`

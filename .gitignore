@@ -3,3 +3,8 @@ temp
 build
 dist
 .DS_Store
+
+
+.env
+.env.example
+scripts

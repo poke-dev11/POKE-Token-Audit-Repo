@@ -132,11 +132,11 @@ contract JettonWallet with Deployable {
     // @value The value of the message
     // @returns Adjusted message value after accounting for gas and storage fees
     fun msg_value(value: Int): Int {
-        let msg_value: Int = value;
-        let ton_balance_before_msg: Int = myBalance() - msg_value;
+        let msg_value_temp: Int = value;
+        let ton_balance_before_msg: Int = myBalance() - msg_value_temp;
         let storage_fee: Int = self.minTonsForStorage - min(ton_balance_before_msg, self.minTonsForStorage);
-        msg_value = msg_value - (storage_fee + self.gasConsumption);
-        return msg_value;
+        msg_value_temp = msg_value_temp - (storage_fee + self.gasConsumption);
+        return msg_value_temp;
     }
 
     // @msg The bounced TokenTransferInternal message that failed to send
